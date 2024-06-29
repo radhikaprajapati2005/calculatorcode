@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestInCalculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="investincalculator-white1616.png" type="image/png">
+</head>
+<body>
+    <!-- NAVBAR START -->
+    <nav class="navbar">
+        <span class="toggle-nav" id="toggle-nav">
+            <i class="material-icons">menu</i>
+        </span>
+        <a href="index.html" class="logo">
+            <p>InvestInCalculator</p>
+        </a>
+        <!-- <div class=""> -->
+
+        <!-- </div> -->
+        <ul class="main-nav" id="main-nav">
+            <!-- <li><a href="#" class="nav-links" >Home</a></li> -->
+            <li><a href="index.html" class="nav-links">Home</a></li>
+            <li><a href="#" class="nav-links" onclick="togglePopup('popup-1')">Contact Us</a></li>
+            <!-- <li><a href="#" class="nav-links">Conatct</a></li> -->
+            <li><a href="information.html" class="nav-links"><i class="fa-solid fa-circle-info"></i></a></li>
+        </ul>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <div class="popup" id="popup-1">
+        <div class="overlay"></div>
+        <div class="content">
+            <div class="close-btn" onclick="togglePopup('popup-1')">&times;</div>
+            <h1>Email Us:</h1>
+            <p>Send Mail:<a href="mailto:Investincalculator@gmail.com">Investincalculator@gmail.com</a></p>
+        </div>
+    </div>
+
+
+    <!-- How to use -->
+
+    <div class="investment-instructions">
+        <h1 class="investment-title">How to Use</h1>
+        <ol class="investment-steps">
+            <li class="investment-step">
+                <strong>Total Amount:</strong> Insert the maximum amount you wish to invest in a particular stock.
+                <span class="investment-example">(For example: Rs. 100,000/-)</span>
+            </li>
+            <li class="investment-step">
+                <strong>Stock Purchase Price:</strong> Invest already invested stock price or insert today's market price of the stock you want to start investing.
+
+            </li>
+            <li class="investment-step">
+                <strong>Expected Return:</strong> Insert the percentage (%) you want to make as profit from the investment.
+            </li>
+            <li class="investment-step">
+                <strong>Already Invested:</strong> If you already invested in the stock, insert that particular invested amount in rupees here. If not, insert the value zero (0).
+            </li>
+            <li class="investment-step">
+                <strong>Remaining Amount:</strong> It will calculate automatically.
+            </li>
+        </ol>
+
+        <h2 class="investment-result-title">Result</h2>
+        <p class="investment-result-description">After pressing the calculate button, you will get the result in 4 ways of investment:</p>
+        <ol class="investment-results">
+            <li class="investment-result">
+                <strong>First: (Approx. amount to be invested till 40% Dip)</strong><br>
+                The calculation shows that you would have to invest in a particular stock until the stock gets down 40% from your given stock price accordingly.
+            </li>
+            <li class="investment-result">
+                <strong>Second: (Approx. amount to be invested till 30% Dip)</strong><br>
+                The calculation shows that you would have to invest in a particular stock until the stock gets down 30% from your given stock price accordingly.
+            </li>
+            <li class="investment-result">
+                <strong>Third: (Approx. amount to be invested till 20% Dip)</strong><br>
+                The calculation shows that you would have to invest in a particular stock until the stock gets down 20% from your given stock price accordingly.
+            </li>
+            <li class="investment-result">
+                <strong>Fourth: (Approx. amount to be invested till 10% Dip)</strong><br>
+                The calculation shows that you would have to invest in a particular stock until the stock gets down 10% from your given stock price accordingly.
+            </li>
+        </ol>
+
+        <h3 class="investment-detail-title">Amount:</h3>
+        <p class="investment-detail">This shows the particular amount to be invested in a particular stock price. <span class="investment-example">(For example: Rs 10,000 would be invested when the stock price hits Rs 20)</span></p>
+
+        <h3 class="investment-detail-title">Stock Price:</h3>
+        <p class="investment-detail">The stock price at which you have to invest.</p>
+
+        <h3 class="investment-detail-title">Quantity:</h3>
+        <p class="investment-detail">The number of shares you have to buy according to the stock price shown in the result.</p>
+
+        <h3 class="investment-detail-title">Average Price:</h3>
+        <p class="investment-detail">The average of all your buy prices of shares bought during a dip in the price of a share.</p>
+
+        <h3 class="investment-detail-title">Target Price:</h3>
+        <p class="investment-detail">The price where you would sell your stock to get a profit according to your expected return.</p>
+
+        <h3 class="investment-detail-title">Net Profit:</h3>
+        <p class="investment-detail">The profit you will earn according to your expected return if you invested as shown in the result.</p>
+    </div>
+
+    <!-- How to end -->
+
+    <footer>
+        <div class="content" id="about-us">
+            <div class="top">
+                <div class="logo-details">
+                    <!-- <i class="fab fa-slack"></i> -->
+                    <img src="investincalculator-white1616.png" class="footer-logo-1" alt="footer-logo">
+                    <span class="logo_name">InvestInCalculator</span>
+                  </div>
+
+          </div>
+          <div class="link-boxes">
+
+            <p class="about-us">We made an investing calculator to help you invest wisely in the stock market. It tells you which stocks to buy, when to buy them, and how much to buy. If the stock price drops, the calculator also shows the average price and quantity afterward. You can use it to set your profit margin as a percentage. Plus, it helps you figure out when to sell to reach your profit goal. This calculator helps you calculate your profit based on how much you want to make.</p>
+
+          </div>
+        </div>
+        <div class="bottom-details">
+          <div class="bottom_text">
+            <span class="copyright_text">Copyright &#169; 2024 <a href="#">InvestInCalculator</a>All rights reserved</span>
+            <span class="copyright_text">Developed by <a href="https://github.com/radhikaprajapati2005" target="_blank">Radhika</a></span>
+            <!-- <span class="policy_terms">
+              <a href="#">Privacy policy</a>
+              <a href="#">Terms & condition</a>
+            </span> -->
+          </div>
+        </div>
+      </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

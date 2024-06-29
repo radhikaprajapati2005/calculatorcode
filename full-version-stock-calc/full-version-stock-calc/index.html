@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvestInCalculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="investincalculator-white1616.png" type="image/png" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
+      integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <!-- NAVBAR START -->
+    <nav class="navbar">
+      <span class="toggle-nav" id="toggle-nav">
+        <i class="material-icons">menu</i>
+      </span>
+      <a href="#" class="logo">
+        <p>InvestInCalculator</p>
+      </a>
+      <!-- <div class=""> -->
+
+      <!-- </div> -->
+      <ul class="main-nav" id="main-nav">
+        <!-- <li><a href="#" class="nav-links" >Home</a></li> -->
+        <li><a href="#" class="nav-links">Home</a></li>
+        <li>
+          <a href="#" class="nav-links" onclick="togglePopup('popup-1')"
+            >Contact Us</a
+          >
+        </li>
+        <!-- <li><a href="#" class="nav-links">Conatct</a></li> -->
+        <li>
+          <a href="information.html" class="nav-links"
+            ><i class="fa-solid fa-circle-info"></i
+          ></a>
+        </li>
+      </ul>
+    </nav>
+    <!-- NAVBAR END -->
+
+    <div class="popup" id="popup-1">
+      <div class="overlay"></div>
+      <div class="content">
+        <div class="close-btn" onclick="togglePopup('popup-1')">&times;</div>
+        <h1>Email Us:</h1>
+        <p>
+          Send Mail:<a href="mailto:Investincalculator@gmail.com"
+            >Investincalculator@gmail.com</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <!-- Main Table Start -->
+
+    <div class="container">
+      <!-- Input -->
+      <div class="form-whole-group">
+        <div class="form-group" style="position: relative">
+          <label for="total-amount">Total investment Amount(₹):</label>
+          <div class="input-wrapper">
+            <input
+              type="number"
+              id="total-amount"
+              placeholder="Total amount"
+              style="padding-left: 25px"
+            />
+            <span
+              style="
+                position: absolute;
+                left: 10px;
+                top: 70%;
+                transform: translateY(-50%);
+                font-size: 16px;
+                color: #000;
+              "
+              >₹</span
+            >
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="purchase-price">Stock Purchase Price:</label>
+          <input
+            type="number"
+            id="purchase-price"
+            placeholder="Stock price you want to invest"
+          />
+        </div>
+        <div class="form-group" style="position: relative">
+          <label for="percentage-profit">Expected Return:</label>
+          <input
+            type="number"
+            id="percentage-profit"
+            placeholder=" of profit"
+            style="padding-left: 25px"
+          />
+          <span
+            style="
+              position: absolute;
+              left: 10px;
+              top: 70%;
+              transform: translateY(-50%);
+              font-size: 14px;
+              color: #000;
+              font-weight: bold;
+            "
+            >%</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="first-amount">Already Invested Amount:</label>
+          <input type="number" id="first-amount" placeholder="0" value="0" />
+        </div>
+        <div class="form-group">
+          <label for="price-down">Remaining Amount:</label>
+          <input
+            type="number"
+            id="remaining-amount"
+            placeholder="Remaining Amount"
+          />
+        </div>
+        <button class="btn" onclick="calculate()">Calculate</button>
+      </div>
+
+      <!-- Main table end -->
+
+      <h2>Result</h2>
+      <!-- from here starts new -->
+      <!-- 40% starts -->
+      <div class="table-container">
+        <p class="note-approx">All the values are Approx.</p>
+        <table>
+          <tr>
+            <th class="box-color-1"></th>
+            <th>Amount</th>
+            <th>Stock Price</th>
+            <th>QTY</th>
+            <th>Average Price</th>
+            <th>Target Price</th>
+            <th>Net Profit</th>
+          </tr>
+          <tr>
+            <td rowspan="4">
+              Approx amount to be<br />
+              invested till 40% dip
+            </td>
+            <td id="invst-avg40--1" class="first-color">0</td>
+            <td id="dip-avg1--1" class="first-color">0</td>
+            <td id="qty-1--1" class="first-color">0</td>
+            <td id="avgPrice1" rowspan="4">0</td>
+            <td id="targetPrice1" rowspan="4">0</td>
+            <td id="netProfit1" rowspan="4">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg40--2" class="second-color">0</td>
+            <td id="dip-avg1--2" class="second-color">0</td>
+            <td id="qty-2--1" class="second-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg40--3" class="third-color">0</td>
+            <td id="dip-avg1--3" class="third-color">0</td>
+            <td id="qty-3--1" class="third-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg40--4" class="fourth-color">0</td>
+            <td id="dip-avg1--4" class="fourth-color">0</td>
+            <td id="qty-4--1" class="fourth-color">0</td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td id="total-40">0</td>
+            <td></td>
+            <td id="totalQty1">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <!-- 40% ends -->
+        <!-- 30% starts -->
+        <table>
+          <tr>
+            <th class="box-color-2"></th>
+            <th>Amount</th>
+            <th>Stock Price</th>
+            <th>QTY</th>
+            <th>Average Price</th>
+            <th>Target Price</th>
+            <th>Net Profit</th>
+          </tr>
+          <tr>
+            <td rowspan="4">
+              Approx amount to be<br />
+              invested till 30% dip
+            </td>
+            <td id="invst-avg30--1" class="first-color">0</td>
+            <td id="dip-avg2--1" class="first-color">0</td>
+            <td id="qty-1--2" class="first-color">0</td>
+            <!-- default -->
+            <td id="avgPrice2" rowspan="4">0</td>
+            <td id="targetPrice2" rowspan="4">0</td>
+            <td id="netProfit2" rowspan="4">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg30--2" class="second-color">0</td>
+            <td id="dip-avg2--2" class="second-color">0</td>
+            <td id="qty-2--2" class="second-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg30--3" class="third-color">0</td>
+            <td id="dip-avg2--3" class="third-color">0</td>
+            <td id="qty-3--2" class="third-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg30--4" class="fourth-color">0</td>
+            <td id="dip-avg2--4" class="fourth-color">0</td>
+            <td id="qty-4--2" class="fourth-color">0</td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td id="total-30">0</td>
+            <td></td>
+            <td id="totalQty2">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <!-- 30% Ends -->
+        <!-- 20% starts -->
+        <table>
+          <tr>
+            <th class="box-color-3"></th>
+            <th>Amount</th>
+            <th>Stock Price</th>
+            <th>QTY</th>
+            <th>Average Price</th>
+            <th>Target Price</th>
+            <th>Net Profit</th>
+          </tr>
+          <tr>
+            <td rowspan="4">
+              Approx amount to be<br />
+              invested till 20% dip
+            </td>
+            <td id="invst-avg20--1" class="first-color">0</td>
+            <td id="dip-avg3--1" class="first-color">0</td>
+            <td id="qty-1--3" class="first-color">0</td>
+            <!-- default -->
+            <td id="avgPrice3" rowspan="4">0</td>
+            <td id="targetPrice3" rowspan="4">0</td>
+            <td id="netProfit3" rowspan="4">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg20--2" class="second-color">0</td>
+            <td id="dip-avg3--2" class="second-color">0</td>
+            <td id="qty-2--3" class="second-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg20--3" class="third-color">0</td>
+            <td id="dip-avg3--3" class="third-color">0</td>
+            <td id="qty-3--3" class="third-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg20--4" class="fourth-color">0</td>
+            <td id="dip-avg3--4" class="fourth-color">0</td>
+            <td id="qty-4--3" class="fourth-color">0</td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td id="total-20">0</td>
+            <td></td>
+            <td id="totalQty3">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <!-- 20% Ends -->
+        <!-- 10% starts -->
+        <table>
+          <tr>
+            <th class="box-color-4"></th>
+            <th>Amount</th>
+            <th>Stock Price</th>
+            <th>QTY</th>
+            <th>Average Price</th>
+            <th>Target Price</th>
+            <th>Net Profit</th>
+          </tr>
+          <tr>
+            <td rowspan="4">
+              Approx amount to be<br />
+              invested till 10% dip
+            </td>
+            <td id="invst-avg10--1" class="first-color">0</td>
+            <td id="dip-avg4--1" class="first-color">0</td>
+            <td id="qty-1--4" class="first-color">0</td>
+            <!-- default -->
+            <td id="avgPrice4" rowspan="4">0</td>
+            <td id="targetPrice4" rowspan="4">0</td>
+            <td id="netProfit4" rowspan="4">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg10--2" class="second-color">0</td>
+            <td id="dip-avg4--2" class="second-color">0</td>
+            <td id="qty-2--4" class="second-color">0</td>
+          </tr>
+          <tr>
+            <td class="third-color">0</td>
+            <td id="dip-avg3--4" class="third-color">0</td>
+            <td id="qty-3--3" class="third-color">0</td>
+          </tr>
+          <tr>
+            <td id="invst-avg20--4" class="fourth-color">0</td>
+            <td id="dip-avg3--4" class="fourth-color">0</td>
+            <td id="qty-4--3" class="fourth-color">0</td>
+          </tr>
+          <tr>
+            <td>Total:</td>
+            <td id="total-10">0</td>
+            <td></td>
+            <td id="totalQty4">0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+        <!-- 10% Ends -->
+      </div>
+      <div class="disclaimer">
+        <p>
+          Invest money at your own risk. We are not responsible for any losses
+          because the market is subject to risk.
+        </p>
+      </div>
+
+      <div class="boxes">
+        <div class="review-box">
+          <div style="display: flex; align-items: center; margin-bottom: 10px">
+            <img class="logo" src="zerodha_logo_small.gif" alt="Zerodha Logo" />
+            <div class="title">Zerodha</div>
+          </div>
+          <div class="details">
+            <h3 class="box-header">Free Eq Delivery & MF</h3>
+            <p class="box-paragraph">Flat ₹20 Per Trade in F&O</p>
+          </div>
+          <a
+            href="https://zerodha.com/open-account?c=JC8329"
+            class="button"
+            target="_blank"
+            >Learn More</a
+          >
+        </div>
+
+        <div class="review-box">
+          <div style="display: flex; align-items: center; margin-bottom: 10px">
+            <img class="logo" src="upstox-small-logo.png" alt="Zerodha Logo" />
+            <div class="title">Upstox</div>
+          </div>
+          <div class="details">
+            <h3 class="box-header">FREE Account Opening</h3>
+            <p class="box-paragraph">Flat ₹20 Per Trade</p>
+          </div>
+          <a
+            href="https://upstox.com/open-account/?f=4DALSR"
+            class="button"
+            target="_blank"
+            >Learn More</a
+          >
+        </div>
+      </div>
+
+      <!-- Chart Start -->
+      <div id="chart-container">
+        <div class="chart-title">Quick Comparison of All (4) Calculations</div>
+        <div style="display: flex; align-items: center">
+          <div class="y-axis-label">Dip</div>
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+      <script src="chart.js"></script>
+
+      <!-- Chart End -->
+    </div>
+    <!-- Main Table End -->
+
+    <footer>
+      <div class="content" id="about-us">
+        <div class="top">
+          <div class="logo-details">
+            <!-- <i class="fab fa-slack"></i> -->
+            <img
+              src="investincalculator-white1616.png"
+              class="footer-logo-1"
+              alt="footer-logo"
+            />
+            <span class="logo_name">InvestInCalculator</span>
+          </div>
+        </div>
+        <div class="link-boxes">
+          <p class="about-us">
+            We made an investing calculator to help you invest wisely in the
+            stock market. It tells you which stocks to buy, when to buy them,
+            and how much to buy. If the stock price drops, the calculator also
+            shows the average price and quantity afterward. You can use it to
+            set your profit margin as a percentage. Plus, it helps you figure
+            out when to sell to reach your profit goal. This calculator helps
+            you calculate your profit based on how much you want to make.
+          </p>
+        </div>
+      </div>
+      <div class="bottom-details">
+        <div class="bottom_text">
+          <span class="copyright_text"
+            >Copyright &#169; 2024 <a href="#">InvestInCalculator</a>All rights
+            reserved</span
+          >
+          <span class="copyright_text"
+            >Developed by
+            <a href="https://github.com/radhikaprajapati2005" target="_blank"
+              >Radhika</a
+            ></span
+          >
+          <!-- https://github.com/radhikaprajapati2005 -->
+          <!-- <span class="policy_terms">
+          <a href="#">Privacy policy</a>
+          <a href="#">Terms & condition</a>
+        </span> -->
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
